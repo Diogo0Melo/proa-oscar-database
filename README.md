@@ -1,4 +1,4 @@
-# 🏆 Desafio MongoDB: Oscar Edition 🎬
+<h1 align="center">🏆 Desafio MongoDB: Oscar Edition 🎬</h1>
 
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![Status](https://img.shields.io/badge/Status-resolvendo-yellow?style=for-the-badge)](#)
@@ -17,7 +17,7 @@ Este repositório contém a resolução de uma série de exercícios práticos u
 ## 🗺️ Guia de Consultas
 
 <details>
-<summary><strong>📂 Nível 1: Primeiros Passos </strong></summary>
+<summary><strong><h3 style="display: inline">📂 Nível 1: Primeiros Passos </h3></strong></summary>
 <br>
 
 
@@ -25,10 +25,6 @@ Este repositório contém a resolução de uma série de exercícios práticos u
 <summary><strong> 1.1 Quantos registros existem na coleção de indicados ao Oscar?</strong></summary>
 
 💻 **Query:**
-> Foco em contagem de documentos, valores únicos e limites temporais.
-
-### 1.1 Volume de Dados
-**Enunciado:** Quantos registros existem na coleção de indicados ao Oscar?
 ```javascript
 db.oscar.countDocuments()
 ```
@@ -49,7 +45,7 @@ R: 11104 registros
 <details>
 <summary><strong>1.2 Quais são as diferentes categorias de premiação que existem no banco de dados? Liste todas as categorias únicas.</strong></summary>
 
-**Query:**
+💻 **Query:**
 ```javascript
 db.oscar.distinct("categoria").length
 ```
@@ -138,7 +134,7 @@ R: 98
 ---
 
 <details>
-<summary><strong>📂 Nível 2: Explorando Categorias 🎭</strong></summary>
+<summary><strong><h3 style="display: inline">📂 Nível 2: Explorando Categorias</h3></strong></summary>
 <br>
 
 <details>
@@ -526,7 +522,10 @@ db.oscar.distinct("categoria").filter(categoria => categoria.includes("DIRECTING
 
 ---
 
-## Nível 3: Atores e Atrizes Famosos
+<details>
+<summary><strong>
+<h3 style="display: inline">📂 Nível 3: Atores e Atrizes Famosos</h3></strong></summary>
+<br>
 
 <details>
 <summary><strong>🎭 3.1 Quantas vezes Natalie Portman foi indicada ao Oscar?</strong></summary>
@@ -569,3 +568,5 @@ R: 1 vez
 </details>
 
 ---
+
+</details>
