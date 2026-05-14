@@ -1,17 +1,34 @@
-# 🏆 Respostas - Exercícios MongoDB: Oscar 🎬✨
+# 🏆 Desafio MongoDB: Oscar Edition 🎬
 
-Este repositório serve como um guia interativo das consultas realizadas. 🗺️ Para cada desafio, você encontrará:
-1. 📜 O **enunciado** da questão.
-2. 💻 A **query (consulta)** desenvolvida no MongoDB para resolver o problema.
-3. 🎁 Uma **janela expansível (abre/fecha)** contendo o resultado da execução, que pode ser a saída em JSON/BSON ou uma imagem comprovando o resultado.
+[![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Status](https://img.shields.io/badge/Status-resolvendo-yellow?style=for-the-badge)](#)
+
+Este repositório contém a resolução de uma série de exercícios práticos utilizando **MongoDB Query Language (MQL)**. O objetivo é explorar uma base de dados histórica sobre as indicações e vitórias do Oscar
 
 ---
 
-## 🚀 Nível 1: Primeiros Passos 🐾
+## 🛠️ Tecnologias e Ferramentas
+*   **Banco de Dados:** MongoDB (NoSQL)
+*   **Interface:** MongoDB Compass / Mongosh
+*   **Dataset:** Histórico de indicados ao Oscar (1928 - 2026)
 
-### 🎟️ 1.1 Quantos registros existem na coleção de indicados ao Oscar?
+---
+
+## 🗺️ Guia de Consultas
+
+<details>
+<summary><strong>📂 Nível 1: Primeiros Passos </strong></summary>
+<br>
+
+
+<details>
+<summary><strong> 1.1 Quantos registros existem na coleção de indicados ao Oscar?</strong></summary>
 
 💻 **Query:**
+> Foco em contagem de documentos, valores únicos e limites temporais.
+
+### 1.1 Volume de Dados
+**Enunciado:** Quantos registros existem na coleção de indicados ao Oscar?
 ```javascript
 db.oscar.countDocuments()
 ```
@@ -25,10 +42,12 @@ R: 11104 registros
 ```
 
 </details>
+</details>
+
 
 ---
-
-### 1.2 Quais são as diferentes categorias de premiação que existem no banco de dados? Liste todas as categorias únicas.
+<details>
+<summary><strong>1.2 Quais são as diferentes categorias de premiação que existem no banco de dados? Liste todas as categorias únicas.</strong></summary>
 
 **Query:**
 ```javascript
@@ -44,10 +63,12 @@ R: 122 categorias diferentes
 ```
 
 </details>
+</details>
 
 ---
 
-### 1.3 Qual foi o primeiro ano de cerimônia do Oscar registrado na base?
+<details>
+<summary><strong>1.3 Qual foi o primeiro ano de cerimônia do Oscar registrado na base?</strong></summary>
 
 **Query:**
 ```javascript
@@ -66,10 +87,12 @@ db.oscar.find({}, { "ano_cerimonia": 1 }).sort({ "ano_cerimonia": 1 }).limit(1)
 ```
 
 </details>
+</details>
 
 ---
 
-### 1.4 Qual foi o último ano de cerimônia registrado na base?
+<details>
+<summary><strong>1.4 Qual foi o último ano de cerimônia registrado na base?</strong></summary>
 
 **Query:**
 ```javascript
@@ -88,10 +111,12 @@ db.oscar.find({}, { "ano_cerimonia": 1 }).sort({ "ano_cerimonia": -1 }).limit(1)
 ```
 
 </details>
+</details>
 
 ---
 
-### 1.5 Quantas cerimônias do Oscar estão registradas no total?
+<details>
+<summary><strong>1.5 Quantas cerimônias do Oscar estão registradas no total?</strong></summary>
 
 **Query:**
 ```javascript
@@ -107,12 +132,17 @@ R: 98
 ```
 
 </details>
+</details>
+</details>
 
 ---
 
-## 🔍 Nível 2: Explorando Categorias 🎭
+<details>
+<summary><strong>📂 Nível 2: Explorando Categorias 🎭</strong></summary>
+<br>
 
-### 🎬 2.1 Quantas indicações existem para cada categoria? Agrupe por categoria e ordene da mais frequente para a menos frequente.
+<details>
+<summary><strong>🎬 2.1 Quantas indicações existem para cada categoria? Agrupe por categoria e ordene da mais frequente para a menos frequente.</strong></summary>
 
 💻 **Query:**
 ```javascript
@@ -318,10 +348,12 @@ db.oscar.aggregate([
 ```
 
 </details>
+</details>
 
 ---
 
-### 🌟 2.2 Qual categoria teve mais indicações ao longo da história do Oscar?
+<details>
+<summary><strong>🌟 2.2 Qual categoria teve mais indicações ao longo da história do Oscar?</strong></summary>
 
 💻 **Query:**
 ```javascript
@@ -353,10 +385,12 @@ db.oscar.aggregate([
 ```
 
 </details>
+</details>
 
 ---
 
-### 🎥 2.3 Qual categoria teve menos indicações ao longo da história?
+<details>
+<summary><strong>🎥 2.3 Qual categoria teve menos indicações ao longo da história?</strong></summary>
 
 💻 **Query:**
 ```javascript
@@ -388,10 +422,12 @@ db.oscar.aggregate([
 ```
 
 </details>
+</details>
 
 ---
 
-### 🎞️ 2.4 A partir de que ano a categoria "ACTRESS" deixou de existir? (Dica: procure a última cerimônia com essa categoria)
+<details>
+<summary><strong> 🎞️ 2.4 A partir de que ano a categoria "ACTRESS" deixou de existir? (Dica: procure a última cerimônia com essa categoria)</strong></summary>
 
 💻 **Query:**
 ```javascript
@@ -424,6 +460,112 @@ db.oscar.aggregate([
 }
 ```
 
+</details>
+</details>
+
+---
+
+<details>
+<summary><strong>🎞️ 2.5 Quais categorias existiam na primeira cerimônia (1928) e não existem mais hoje?</strong></summary>
+
+💻 **Query:**
+```javascript
+db.oscar.distinct("categoria", {ano_cerimonia: 1928}).filter(categoria => !db.oscar.distinct("categoria", {ano_cerimonia: 2026}).includes(categoria));
+```
+
+<details>
+<summary><strong>Ver Resposta 🕵️‍♂️🔍</strong></summary>
+<br>
+
+```json
+[
+  'ACTOR',
+  'ACTRESS',
+  'ART DIRECTION',
+  'DIRECTING (Comedy Picture)',
+  'DIRECTING (Dramatic Picture)',
+  'ENGINEERING EFFECTS',
+  'OUTSTANDING PICTURE',
+  'SPECIAL AWARD',
+  'UNIQUE AND ARTISTIC PICTURE',
+  'WRITING (Adaptation)',
+  'WRITING (Original Story)',
+  'WRITING (Title Writing)'
+]
+```
+
+</details>
+</details>
+
+
+---
+
+<details>
+<summary><strong>🎞️ 2.6 Liste todas as categorias que contêm a palavra "DIRECTING" no nome.</strong></summary>
+
+💻 **Query:**
+```javascript
+db.oscar.distinct("categoria").filter(categoria => categoria.includes("DIRECTING"))
+```
+
+<details>
+<summary><strong>Ver Resposta 🕵️‍♂️🔍</strong></summary>
+<br>
+
+```json
+[
+  'DIRECTING',
+  'DIRECTING (Comedy Picture)',
+  'DIRECTING (Dramatic Picture)'
+]
+```
+
+</details>
+</details>
+</details>
+
+---
+
+## Nível 3: Atores e Atrizes Famosos
+
+<details>
+<summary><strong>🎭 3.1 Quantas vezes Natalie Portman foi indicada ao Oscar?</strong></summary>
+
+💻 **Query:**
+```javascript
+db.oscar.countDocuments({nome_do_indicado: "Natalie Portman"})
+```
+
+<details>
+<summary><strong>Ver Resposta 🕵️‍♂️🔍</strong></summary>
+<br>
+
+```json
+R: 3 vezes
+```
+
+</details>
+</details>
+
+---
+
+<details>
+<summary><strong>🎭 3.2 Quantos Oscars Natalie Portman ganhou?</strong></summary>
+
+💻 **Query:**
+```javascript
+db.oscar.countDocuments({nome_do_indicado: "Natalie Portman", vencedor: true})
+```
+
+<details>
+<summary><strong>Ver Resposta 🕵️‍♂️🔍</strong></summary>
+<br>
+
+```json
+R: 1 vez
+```
+
+</details>
 </details>
 
 ---
