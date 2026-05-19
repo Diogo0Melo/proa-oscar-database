@@ -573,7 +573,7 @@ R: 1 vez
 
 💻 **Query:**
 ```javascript
-db.oscar.find({nome_do_indicado: "Natalie Portman"}, {ano_cerimonia: 1, nome_do_filme: 1, _id: 0})
+db.oscar.find({nome_do_indicado: "Natalie Portman"}, {ano_cerimonia: 1, nome_do_filme: 1, _id: 0}).toArray()
 ```
 
 <details>
@@ -581,7 +581,11 @@ db.oscar.find({nome_do_indicado: "Natalie Portman"}, {ano_cerimonia: 1, nome_do_
 <br>
 
 ```json
-R: 1 vez
+[
+  { ano_cerimonia: 2005, nome_do_filme: 'Closer' },
+  { ano_cerimonia: 2011, nome_do_filme: 'Black Swan' },
+  { ano_cerimonia: 2017, nome_do_filme: 'Jackie' }
+]
 ```
 
 </details>
