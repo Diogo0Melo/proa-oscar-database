@@ -16,7 +16,7 @@ Este repositório contém a resolução de uma série de exercícios práticos u
 ## 🗺️ Guia de Consultas
 
 <details>
-<summary><strong><h3 style="display: inline-block">📁 Nível 1: Primeiros Passos</h3></strong></summary>
+<summary><h3 style="display: inline-block">📁 Nível 1: Primeiros Passos</h3></summary>
 <br>
 
 
@@ -133,7 +133,7 @@ R: 98
 
 
 <details>
-<summary><strong><h3 style="display: inline-block">📁 Nível 2: Explorando Categorias</h3></strong></summary>
+<summary><h3 style="display: inline-block">📁 Nível 2: Explorando Categorias</h3></summary>
 <br>
 
 <details>
@@ -521,7 +521,7 @@ db.oscar.distinct("categoria").filter(categoria => categoria.includes("DIRECTING
 </details>
 
 <details>
-<summary><strong><h3 style="display: inline-block">📁 Nível 3: Atores e Atrizes Famosos</h3></strong></summary>
+<summary><h3 style="display: inline-block">📁 Nível 3: Atores e Atrizes Famosos</h3></summary>
 <br>
 
 <details>
@@ -566,3 +566,24 @@ R: 1 vez
 </details>
 <br>
 
+
+<details>
+<summary><strong>🎭 3.3 Em quais anos e por quais filmes Natalie Portman foi indicada?</strong></summary>
+<br>
+
+💻 **Query:**
+```javascript
+db.oscar.find({nome_do_indicado: "Natalie Portman"}, {ano_cerimonia: 1, nome_do_filme: 1, _id: 0})
+```
+
+<details>
+<summary><strong>Ver Resposta</strong></summary>
+<br>
+
+```json
+R: 1 vez
+```
+
+</details>
+</details>
+<br>
